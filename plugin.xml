@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin xmlns:android="http://schemas.android.com/apk/res/android" id="cordova-plugin-aliall"
+    version="1.0.501"
+    xmlns="http://apache.org/cordova/ns/plugins/1.0">
+    <name>PushPlugin</name>
+    <js-module name="PushPlugin" src="www/PushPlugin.js">
+        <clobbers target="PushPlugin" />
+    </js-module>
+    <preference name="MIID" default="" />
+    <preference name="MIKEY" default="" />
+    <preference name="APPKEY" />
+    <preference name="APPSECRET" />
+    <preference name="ALIFIXIDSECRET" />
+    <preference name="ALIFIXAPPSECRET" />
+    <preference name="ALIFIXRSASECRET" />
+    <hook type="after_prepare" src="www/android_socket.js" />
+    <platform name="android">
+        <config-file parent="/*" target="res/xml/config.xml">
+            <feature name="PushPlugin">
+                <param name="android-package" value="com.blanktrack.aliall.PushPlugin" />
+            </feature>
+        </config-file>
+
+        <config-file target="AndroidManifest.xml" parent="/manifest/application">
+            <meta-data
+                android:name="com.blanktrack.miid"
+                android:value="$MIID\0" />
+            <meta-data
+                android:name="com.blanktrack.mikey"
+                android:value="$MIKEY\0" />
+            <meta-data
+                android:name="com.alibaba.app.appkey"
+                android:value="$APPKEY" />
+            <meta-data
+                android:name="com.alibaba.app.appsecret"
+                android:value="$APPSECRET" />
+            <meta-data
+                android:name="com.taobao.android.hotfix.IDSECRET"
+                android:value="$ALIFIXIDSECRET" />
+            <meta-data
+                android:name="com.taobao.android.hotfix.APPSECRET"
+                android:value="$ALIFIXAPPSECRET" />
+            <meta-data
+                android:name="com.taobao.android.hotfix.RSASECRET"
+                android:value="$ALIFIXRSASECRET"/>
+
+
+            <receiver
+                android:name="com.blanktrack.aliall.MyMessageReceiver"
+                android:exported="false"> <!-- 为保证receiver安全，建议设置不可导出，如需对其他应用开放可通过android：permission进行限制 -->
+                <intent-filter>
+                    <action android:name="com.alibaba.push2.action.NOTIFICATION_OPENED" />
+                </intent-filter>
+                <intent-filter>
+                    <action android:name="com.alibaba.push2.action.NOTIFICATION_REMOVED" />
+                </intent-filter>
+                <intent-filter>
+                    <action android:name="com.alibaba.sdk.android.push.RECEIVE" />
+                </intent-filter>
+            </receiver>
+
+        </config-file>
+
+        <framework src="push.gradle" custom="true" type="gradleReference" />
+        <!--<framework src="com.aliyun.ams:alicloud-android-push:3.0.11@aar" />-->
+        <!--<framework src="com.aliyun.ams:alicloud-android-utdid:1.1.5.3" />-->
+        <!--<framework src="com.aliyun.ams:alicloud-android-ut:5.1.0" />-->
+        <!--<framework src="com.aliyun.ams:alicloud-android-third-push:3.0.3@aar" />-->
+
+        <source-file src="src/android/com/blanktrack/aliall/PushPlugin.java"
+            target-dir="src/com/blanktrack/aliall/" />
+        <source-file src="src/android/com/blanktrack/aliall/MyMessageReceiver.java"
+            target-dir="src/com/blanktrack/aliall/" />
+        <source-file src="src/android/com/blanktrack/aliall/MyApplication.java"
+            target-dir="src/com/blanktrack/aliall/" />
+    </platform>
+</plugin>
