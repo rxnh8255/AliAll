@@ -1,5 +1,8 @@
 #阿里云移动端服务
 
+阿里还没支持cordova的js和html更新.该方案暂时搁浅.大家不要用了
+
+
 集成的阿里云的push服务.热修复服务
 
 ## Installing the plugin

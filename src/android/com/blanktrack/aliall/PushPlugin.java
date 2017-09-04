@@ -67,7 +67,7 @@ public class PushPlugin extends CordovaPlugin {
         pushService.register(applicationContext, new CommonCallback() {
             @Override
             public void onSuccess(String response) {
-                Log.i(TAG, "init cloudchannel success");
+                Log.i(TAG, "init cloudchannel success test hotfix");
 
             }
 
