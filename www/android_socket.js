@@ -17,7 +17,7 @@ module.exports = function(context) {
         throw new Error('Unable to find AndroidManifest.xml: ' + err);
       }
 
-      var appClass = 'com.blanktrack.alipush.MyApplication';
+      var appClass = 'com.blanktrack.aliall.MyApplication';
 
       if (data.indexOf(appClass) == -1) {
 

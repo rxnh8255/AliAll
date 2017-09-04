@@ -13,7 +13,7 @@
     ]
   },
   "deprecated": false,
-  "description": "this is a notificationpush",
+  "description": "this is a aliservice",
   "engines": [
     {
       "name": "cordova",
@@ -31,5 +31,5 @@
     "type": "git",
     "url": "git+https://github.com/rxnh8255/AliAll.git"
   },
-  "version": "1.0.501"
+  "version": "1.0.510"
 }

@@ -16,9 +16,9 @@ public class MyMessageReceiver extends MessageReceiver {
     // 消息接收部分的LOG_TAG
     public static final String REC_TAG = "receiver";
     @Override
-    public void onNotification(Context context, String title, String summary, Map<String, String> extraMap) {
+    public void onNotification(Context context, String titles, String summary, Map<String, String> extraMap) {
         // TODO 处理推送通知
-        Log.e("MyMessageReceiver", "Receive notification, title: " + title + ", summary: " + summary + ", extraMap: " + extraMap);
+        Log.e("MyMessageReceiver", "Receive notification11123, title: " + titles + ", summary: " + summary + ", extraMap: " + extraMap);
     }
     @Override
     public void onMessage(Context context, CPushMessage cPushMessage) {
